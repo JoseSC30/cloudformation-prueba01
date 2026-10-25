@@ -1,9 +1,3 @@
-{
-  "Parameters": {
-    "InstanceType": "t3.nano"
-  },
-  "Tags": {
-    "Proyecto": "Practica-CloudFormation",
-    "MetodoDespliegue": "GitSync"
-  }
-}
+template-file-path: template.yaml
+parameters: {}
+tags: {}
