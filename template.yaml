@@ -44,7 +44,7 @@ Resources:
           Value: cfn-practica-git-sg
 
   # ==========================================
-  # SECCION 3: COMPUTO - PERSONA 1
+  # SECCION 3: COMPUTO 1
   # ==========================================
   InstanciaPersona1:
     Type: AWS::EC2::Instance
@@ -59,7 +59,7 @@ Resources:
           Value: cfn-servidor-persona-1
 
   # ==========================================
-  # SECCION 4: COMPUTO - PERSONA 2
+  # SECCION 4: COMPUTO 2
   # ==========================================
   # InstanciaPersona2:
   #   Type: AWS::EC2::Instance
