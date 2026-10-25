@@ -1,0 +1,9 @@
+{
+  "Parameters": {
+    "InstanceType": "t3.nano"
+  },
+  "Tags": {
+    "Proyecto": "Practica-CloudFormation",
+    "MetodoDespliegue": "GitSync"
+  }
+}

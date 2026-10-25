@@ -1,0 +1,80 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Infraestructura completa desplegada mediante CloudFormation Git Sync
+
+Parameters:
+  LatestAmiId:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64
+  InstanceType:
+    Type: String
+    Default: t3.nano
+
+Resources:
+  # ==========================================
+  # SECCION 1: PERMISOS E IDENTIDAD (IAM)
+  # ==========================================
+  RolConexionSSM:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+
+  PerfilInstanciaSSM:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Roles:
+        - !Ref RolConexionSSM
+
+  # ==========================================
+  # SECCION 2: SEGURIDAD Y FIREWALL
+  # ==========================================
+  MiSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security Group administrado por Git Sync
+      Tags:
+        - Key: Name
+          Value: cfn-practica-git-sg
+
+  # ==========================================
+  # SECCION 3: COMPUTO - PERSONA 1
+  # ==========================================
+  InstanciaPersona1:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref LatestAmiId
+      InstanceType: !Ref InstanceType
+      SecurityGroupIds:
+        - !Ref MiSecurityGroup
+      IamInstanceProfile: !Ref PerfilInstanciaSSM
+      Tags:
+        - Key: Name
+          Value: cfn-servidor-persona-1
+
+  # ==========================================
+  # SECCION 4: COMPUTO - PERSONA 2
+  # ==========================================
+  InstanciaPersona2:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref LatestAmiId
+      InstanceType: !Ref InstanceType
+      SecurityGroupIds:
+        - !Ref MiSecurityGroup
+      IamInstanceProfile: !Ref PerfilInstanciaSSM
+      Tags:
+        - Key: Name
+          Value: cfn-servidor-persona-2
+
+Outputs:
+  Servidor1Id:
+    Value: !Ref InstanciaPersona1
+  Servidor2Id:
+    Value: !Ref InstanciaPersona2
