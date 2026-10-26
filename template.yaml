@@ -10,9 +10,7 @@ Parameters:
     Default: t3.nano
 
 Resources:
-  # ==========================================
   # SECCION 1: PERMISOS E IDENTIDAD (IAM)
-  # ==========================================
   RolConexionSSM:
     Type: AWS::IAM::Role
     Properties:
@@ -32,9 +30,7 @@ Resources:
       Roles:
         - !Ref RolConexionSSM
 
-  # ==========================================
   # SECCION 2: SEGURIDAD Y FIREWALL
-  # ==========================================
   MiSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -43,9 +39,7 @@ Resources:
         - Key: Name
           Value: cfn-practica-git-sg
 
-  # ==========================================
   # SECCION 3: INSTANCIA 1
-  # ==========================================
   InstanciaPersona1:
     Type: AWS::EC2::Instance
     Properties:
@@ -58,9 +52,7 @@ Resources:
         - Key: Name
           Value: cfn-servidor-persona-1
 
-  # ==========================================
   # SECCION 4: INSTANCIA 2
-  # ==========================================
   # InstanciaPersona2:
   #   Type: AWS::EC2::Instance
   #   Properties:
