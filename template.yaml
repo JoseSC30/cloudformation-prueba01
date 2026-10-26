@@ -40,33 +40,33 @@ Resources:
           Value: cfn-practica-git-sg
 
   # SECCION 3: INSTANCIA 1
-  InstanciaPersona1:
-    Type: AWS::EC2::Instance
-    Properties:
-      ImageId: !Ref LatestAmiId
-      InstanceType: !Ref InstanceType
-      SecurityGroupIds:
-        - !Ref MiSecurityGroup
-      IamInstanceProfile: !Ref PerfilInstanciaSSM
-      Tags:
-        - Key: Name
-          Value: cfn-servidor-persona-1
+  # InstanciaPersona1:
+  #   Type: AWS::EC2::Instance
+  #   Properties:
+  #     ImageId: !Ref LatestAmiId
+  #     InstanceType: !Ref InstanceType
+  #     SecurityGroupIds:
+  #       - !Ref MiSecurityGroup
+  #     IamInstanceProfile: !Ref PerfilInstanciaSSM
+  #     Tags:
+  #       - Key: Name
+  #         Value: cfn-servidor-persona-1
 
   # SECCION 4: INSTANCIA 2
-  InstanciaPersona2:
-    Type: AWS::EC2::Instance
-    Properties:
-      ImageId: !Ref LatestAmiId
-      InstanceType: !Ref InstanceType
-      SecurityGroupIds:
-        - !Ref MiSecurityGroup
-      IamInstanceProfile: !Ref PerfilInstanciaSSM
-      Tags:
-        - Key: Name
-          Value: cfn-servidor-persona-2
+  # InstanciaPersona2:
+  #   Type: AWS::EC2::Instance
+  #   Properties:
+  #     ImageId: !Ref LatestAmiId
+  #     InstanceType: !Ref InstanceType
+  #     SecurityGroupIds:
+  #       - !Ref MiSecurityGroup
+  #     IamInstanceProfile: !Ref PerfilInstanciaSSM
+  #     Tags:
+  #       - Key: Name
+  #         Value: cfn-servidor-persona-2
 
-Outputs:
-  Servidor1Id:
-    Value: !Ref InstanciaPersona1
-  Servidor2Id:
-    Value: !Ref InstanciaPersona2
+# Outputs:
+#   Servidor1Id:
+#     Value: !Ref InstanciaPersona1
+#   Servidor2Id:
+#     Value: !Ref InstanciaPersona2
