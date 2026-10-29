@@ -53,17 +53,17 @@ Resources:
           Value: cfn-servidor-persona-1
 
   # SECCION 4: INSTANCIA 2
-  # InstanciaPersona2:
-  #   Type: AWS::EC2::Instance
-  #   Properties:
-  #     ImageId: !Ref LatestAmiId
-  #     InstanceType: !Ref InstanceType
-  #     SecurityGroupIds:
-  #       - !Ref MiSecurityGroup
-  #     IamInstanceProfile: !Ref PerfilInstanciaSSM
-  #     Tags:
-  #       - Key: Name
-  #         Value: cfn-servidor-persona-2
+  InstanciaPersona2:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref LatestAmiId
+      InstanceType: !Ref InstanceType
+      SecurityGroupIds:
+        - !Ref MiSecurityGroup
+      IamInstanceProfile: !Ref PerfilInstanciaSSM
+      Tags:
+        - Key: Name
+          Value: cfn-servidor-persona-2
 
 # Outputs:
 #   Servidor1Id:
